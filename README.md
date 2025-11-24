@@ -58,20 +58,57 @@ classDiagram
 ```
 
 ### DIY Exercise: Animals
-1. Create a Animal class and a Dog class:
+1.  Create an `Animal` class and a `Dog` class.
 
-**Animal has:**
-- Private field species (String)
-- Method eat() that prints "The [species] is eating."
+**Animal Class:**
+-   A `protected` field for `species` (String).
+-   A method `eat()` that prints "The [species] is eating."
 
-**Dog extends Animal:**
-- Constructor that sets species to "Dog"
-- Method bark() that prints "The dog barks."
+```java
+// In a new file called Animal.java
+package ie.atu.inheritance;
 
-In your Main class:
-- Create an instance of Dog
-- Call the eat() method
-- Call the bark() method
+public class Animal {
+    protected String species;
+
+    public void eat() {
+        System.out.println("The " + species + " is eating.");
+    }
+}
+```
+
+**Dog Class:**
+-   Extends `Animal`.
+-   A constructor that sets the `species` to "Dog".
+-   A method `bark()` that prints "The dog barks."
+
+```java
+// In a new file called Dog.java
+package ie.atu.inheritance;
+
+public class Dog extends Animal {
+    public Dog() {
+        this.species = "Dog";
+    }
+
+    public void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+```
+
+**In your `Main` class:**
+-   Create an instance of `Dog`.
+-   Call the `eat()` and `bark()` methods.
+
+```java
+// In your Main.java file
+public static void main(String[] args) {
+    Dog myDog = new Dog();
+    myDog.eat();  // Inherited from Animal
+    myDog.bark(); // Defined in Dog
+}
+```
 
 ## 2. Terminology
 
@@ -79,8 +116,8 @@ In your Main class:
 Familiarize yourself with key terms in inheritance, such as superclass and subclass, and understand their roles.
 
 ### Explanation
-- **Superclass (Parent Class):** The class from which properties and methods are inherited. It represents a general concept.
-- **Subclass (Child Class):** The class that inherits from the superclass. It represents a specialized version of the superclass.
+-   **Superclass (Parent Class):** The class from which properties and methods are inherited. It represents a general concept.
+-   **Subclass (Child Class):** The class that inherits from the superclass. It represents a specialized version of the superclass.
 
 Inheritance establishes a hierarchy between classes, where the subclass extends the functionality of the superclass.
 
@@ -93,12 +130,21 @@ graph TD
 ```
 
 ### DIY Exercise: Vehicles
-1. **Superclass:** Create a class Vehicle with a method move() that prints "The vehicle is moving."
-2. **Subclass:** Create a class Car that extends Vehicle and adds a method playRadio() that prints "Playing radio."
+1.  **Superclass:** Create a class `Vehicle` with a method `move()` that prints "The vehicle is moving."
+2.  **Subclass:** Create a class `Car` that extends `Vehicle` and adds a method `playRadio()` that prints "Playing radio."
 
-In your Main class:
-- Create an instance of Car
-- Call move() and playRadio()
+**In your `Main` class:**
+-   Create an instance of `Car`.
+-   Call `move()` and `playRadio()`.
+
+```java
+// In your Main.java file
+public static void main(String[] args) {
+    Car myCar = new Car();
+    myCar.move();      // Inherited from Vehicle
+    myCar.playRadio(); // Defined in Car
+}
+```
 
 ## 3. Types of Inheritance
 
@@ -230,16 +276,16 @@ classDiagram
 ```
 
 Java doesn't support multiple inheritance with classes to avoid:
-1. Ambiguity when same method exists in multiple parent classes
-2. Complexity in method resolution
-3. Potential naming conflicts
+1.  Ambiguity when same method exists in multiple parent classes
+2.  Complexity in method resolution
+3.  Potential naming conflicts
 
 Instead, Java provides interfaces for implementing multiple inheritance of behavior.
 
 ## 4. The Object Class
 
 ### Learning Objective
-Understand that Object is the root superclass of all classes in Java and its significance in the class hierarchy.
+Understand that `Object` is the root superclass of all classes in Java and its significance in the class hierarchy.
 
 ### Visual Representation
 ```mermaid
@@ -260,31 +306,43 @@ classDiagram
 ```
 
 ### DIY Exercise: Implicit Inheritance
-Create a class Gadget:
-- Do not specify a superclass
-- Override the toString() method to return "This is a gadget."
+Create a class `Gadget`:
+-   Do not specify a superclass.
+-   Override the `toString()` method to return "This is a gadget."
+
+**In your `Main` class:**
+-   Create an instance of `Gadget`.
+-   Print the object to the console, which will implicitly call `toString()`.
+
+```java
+// In your Main.java file
+public static void main(String[] args) {
+    Gadget myGadget = new Gadget();
+    System.out.println(myGadget); // Prints "This is a gadget."
+}
+```
 
 ## 5. Constructors in Inheritance
 
 ### Learning Objective
-Learn how constructors are used in inheritance, including how to invoke superclass constructors using the ``super`` keyword.
+Learn how constructors are used in inheritance, including how to invoke superclass constructors using the `super` keyword.
 
 ### Explanation
 
 In Java inheritance, constructors play a crucial role in object initialization. When you create an instance of a subclass:
 
-1. The superclass constructor must be called first before the subclass constructor executes
-2. If not explicitly called, Java automatically calls the no-argument constructor of the superclass
-3. Use the super() keyword to call a specific superclass constructor
-4. The super() call must be the first statement in the subclass constructor
+1.  The superclass constructor must be called first before the subclass constructor executes
+2.  If not explicitly called, Java automatically calls the no-argument constructor of the superclass
+3.  Use the `super()` keyword to call a specific superclass constructor
+4.  The `super()` call must be the first statement in the subclass constructor
 
 Key points to remember:
 
-- Every constructor must invoke a constructor from its superclass, either explicitly or implicitly
-- If the superclass doesn't have a no-argument constructor, the subclass must explicitly call a superclass constructor using super()
-- The super keyword can also be used to access superclass methods and fields
+-   Every constructor must invoke a constructor from its superclass, either explicitly or implicitly
+-   If the superclass doesn't have a no-argument constructor, the subclass must explicitly call a superclass constructor using `super()`
+-   The `super` keyword can also be used to access superclass methods and fields
 
-### Example  
+### Example
 ```java
 public class Person {
     protected String name;
@@ -316,31 +374,42 @@ sequenceDiagram
 ```
 
 ### DIY Exercise: School Management
-1. Create a Person class with:
-   - Private fields: name (String) and age (int)
-   - Constructor that initializes both fields
-   - Create getters and setters
+1.  Create a `Person` class with:
+    *   Private fields: `name` (String) and `age` (int)
+    *   A constructor that initializes both fields.
+    *   Getters and setters for the fields.
 
-2. Create a Student class that extends Person with:
-   - Private field: studentId (String)
-   - Constructor that initializes name, age, and studentId
-   - Create getters and setters
-   
-In your Main class:
-- Create instances of both Person and Student
-- Print the details of both using print statements and the getters and setters.
+2.  Create a `Student` class that extends `Person` with:
+    *   A private field: `studentId` (String)
+    *   A constructor that initializes `name`, `age`, and `studentId`.
+    *   Getters and setters for its field.
+
+**In your `Main` class:**
+-   Create instances of both `Person` and `Student`.
+-   Print the details of both using the getter methods.
+
+```java
+// In your Main.java file
+public static void main(String[] args) {
+    Person person = new Person("John Doe", 30);
+    Student student = new Student("Jane Doe", 20, "S12345");
+
+    System.out.println("Person: " + person.getName() + ", Age: " + person.getAge());
+    System.out.println("Student: " + student.getName() + ", Age: " + student.getAge() + ", ID: " + student.getStudentId());
+}
+```
 
 ## Summary
-- Definition and Basics of Inheritance
-- Terminology
-- Types of Inheritance
-- The Object Class
-- Constructors in Inheritance
+-   Definition and Basics of Inheritance
+-   Terminology
+-   Types of Inheritance
+-   The Object Class
+-   Constructors in Inheritance
 
 ## Further Reading
-- Java Documentation: Inheritance
-- Book: Effective Java by Joshua Bloch
-- Book: Java: A Beginner's Guide by Herbert Schildt
-- Online Resource: Inheritance in Java - GeeksforGeeks
+-   [Java Documentation: Inheritance](https://docs.oracle.com/javase/tutorial/java/IandI/subclasses.html)
+-   Book: [Effective Java by Joshua Bloch](https://www.oreilly.com/library/view/effective-java/9780134686097/)
+-   Book: [Java: A Beginner's Guide by Herbert Schildt](https://www.accessengineeringlibrary.com/content/book/9781265242211)
+-   Online Resource: [Inheritance in Java - GeeksforGeeks](https://www.geeksforgeeks.org/inheritance-in-java/)
 
 Happy coding! Remember to test your classes and understand how inheritance affects the behavior and structure of your objects.
