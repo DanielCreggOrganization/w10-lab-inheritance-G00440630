@@ -64,7 +64,7 @@ public class Employee extends Person {
 ## 2. Terminology
 
 ### Learning Objective
-Familiarize yourself with key terms in inheritance, such as superclass and subclass, and understand their roles.
+Familiarise yourself with key terms in inheritance, such as superclass and subclass, and understand their roles.
 
 ### Explanation
 -   **Superclass (Parent Class):** The class from which properties and methods are inherited. It represents a general concept.
