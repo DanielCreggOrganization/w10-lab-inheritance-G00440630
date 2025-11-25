@@ -27,17 +27,33 @@ An **"Is-A"** relationship is established between the subclass and superclass. F
 public class Person {
     private String name;
 
-    public void speak() {
-        System.out.println("Hello, my name is " + name);
+    public String getName() { 
+        return name; 
+    }
+
+    public void setName(String name) { 
+        this.name = name; 
     }
 }
 
 public class Employee extends Person {
     private int employeeId;
 
-    public void work() {
-        System.out.println(name + " is working.");
+    public int getEmployeeId() { 
+        return employeeId; 
     }
+
+    public void setEmployeeId(int id) { 
+        this.employeeId = id; 
+    }
+}
+
+// Example usage (e.g. in `Main.java`)
+public static void main(String[] args) {
+    Employee e = new Employee();
+    e.setName("Alice");
+    e.setEmployeeId(123);
+    System.out.println("Employee: " + e.getName() + ", ID: " + e.getEmployeeId());
 }
 ```
 
@@ -45,21 +61,19 @@ public class Employee extends Person {
 <img src="img/diagram.svg" alt="Class Diagram">
 
 ### DIY Exercise: Animals
-1.  Create an `Animal` class and a `Dog` class inside the **ie.atu.inheritance** package you created previously.
+1. Create 2 classes. An `Animal` class and a `Dog` class. The `Dog` class will extend (i.e. inherit from) the `Animal` class. Place both classes inside the `ie.atu.inheritance` package you created previously.
 
 **The Animal Class will contain:**
 -   A `private` field for `species` (String).
 -   `Getter` and `setter` methods for the species field.
--   A method `eat()` that prints "The [species] is eating."
 
 **The Dog Class will contain:**
--   Extends `Animal`.
--   A constructor that sets the `species` to "Dog".
--   A method `bark()` that prints "The dog barks."
+-   A `private` field for `name` (String).
+-   `Getter` and `setter` methods for the name field.
 
 **In the `Main` class:**
 -   Create an instance of `Dog`.
--   Call the `eat()` and `bark()` methods.
+-   Call the setSpecies() and setName() methods. Then print the results to the terminal using the getSpecies() and setSpecies() methods. 
 
 ## 2. Terminology
 
@@ -87,15 +101,6 @@ graph TD
 **In your `Main` class:**
 -   Create an instance of `Car`.
 -   Call `move()` and `playRadio()`.
-
-```java
-// In your Main.java file
-public static void main(String[] args) {
-    Car myCar = new Car();
-    myCar.move();      // Inherited from Vehicle
-    myCar.playRadio(); // Defined in Car
-}
-```
 
 ## 3. Types of Inheritance
 
@@ -265,14 +270,6 @@ Create a class `Gadget`:
 -   Create an instance of `Gadget`.
 -   Print the object to the console, which will implicitly call `toString()`.
 
-```java
-// In your Main.java file
-public static void main(String[] args) {
-    Gadget myGadget = new Gadget();
-    System.out.println(myGadget); // Prints "This is a gadget."
-}
-```
-
 ## 5. Constructors in Inheritance
 
 ### Learning Objective
@@ -338,17 +335,6 @@ sequenceDiagram
 **In your `Main` class:**
 -   Create instances of both `Person` and `Student`.
 -   Print the details of both using the getter methods.
-
-```java
-// In your Main.java file
-public static void main(String[] args) {
-    Person person = new Person("John Doe", 30);
-    Student student = new Student("Jane Doe", 20, "S12345");
-
-    System.out.println("Person: " + person.getName() + ", Age: " + person.getAge());
-    System.out.println("Student: " + student.getName() + ", Age: " + student.getAge() + ", ID: " + student.getStudentId());
-}
-```
 
 ## Summary
 -   Definition and Basics of Inheritance
